@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #1e3a8a;
+  --color-accent: #e11d48;
+}
+
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --chip: #f1f5f9;
+  --chip-on: #1e3a8a;
+  --chip-on-text: #ffffff;
+  --ai: #fef3c7;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1120;
+    --card: #111827;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --border: #1f2937;
+    --chip: #1f2937;
+    --chip-on: #3b82f6;
+    --chip-on-text: #ffffff;
+    --ai: #3b2f0b;
+    color-scheme: dark;
+  }
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.chip {
+  background: var(--chip);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.875rem;
+  line-height: 1.1rem;
+  min-height: 2.25rem;
+  transition: background 0.1s;
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--chip-on);
+  border-color: var(--chip-on);
+  color: var(--chip-on-text);
+}
+
+.field-input {
+  background: var(--chip);
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  padding: 0.5rem 0.7rem;
+  font-size: 16px; /* prevents iOS zoom */
+  width: 100%;
+}
+
+.ai-filled {
+  box-shadow: 0 0 0 2px #f59e0b inset;
+  border-radius: 0.75rem;
+}
+
+textarea,
+input {
+  outline: none;
+}
+textarea:focus,
+input:focus {
+  box-shadow: 0 0 0 2px #3b82f6;
+}
