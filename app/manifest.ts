@@ -16,11 +16,10 @@ export default function manifest(): MetadataRoute.Manifest {
       { src: "/icons/maskable-512.png", sizes: "512x512", type: "image/png", purpose: "maskable" },
     ],
     shortcuts: [
-      { name: "Calcium score", url: "/m/cac" },
-      { name: "Aorta", url: "/m/aorta" },
-      { name: "ASCVD", url: "/m/ascvd" },
-      { name: "Aldosteronism", url: "/m/pa" },
-      { name: "Pre-op", url: "/m/periop" },
+      { name: "Hypertension", url: "/m/htn" },
+      { name: "Heart failure", url: "/m/hf" },
+      { name: "Atrial fibrillation", url: "/m/af" },
+      { name: "Billing check", url: "/billing" },
     ],
   };
 }

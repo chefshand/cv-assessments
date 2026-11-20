@@ -63,7 +63,7 @@ export const CITES: Record<string, Citation> = {
   },
   periop2024: {
     key: "periop2024",
-    text: "Thompson A, Fleischmann KE, et al. 2024 AHA/ACC/ACS/ASNC/HRS/SCA/SCCT/SCMR/SVM Guideline for Perioperative Cardiovascular Management for Noncardiac Surgery. Circulation 2024;150:e351-e442.",
+    text: "Thompson A, Fleischmann KE, et al. 2024 AHA/ACC/ACS/ASNC/HRS/SCA/SCCT/SCMR/SVM Guideline for Perioperative Cardiovascular Management for Noncardiac Surgery. Circulation 2024;150:e351-e442. Reaffirmed without changes as the 2026 guideline: J Am Coll Cardiol 2026;88:1543-1643, doi:10.1016/j.jacc.2026.06.017.",
     url: "https://doi.org/10.1161/CIR.0000000000001285",
   },
   rcri: {
@@ -90,6 +90,71 @@ export const CITES: Record<string, Citation> = {
     key: "valve2020",
     text: "Otto CM, et al. 2020 ACC/AHA Guideline for the Management of Patients With Valvular Heart Disease. Circulation 2021;143:e72-e227.",
     url: "https://doi.org/10.1161/CIR.0000000000000923",
+  },
+  htn2025: {
+    key: "htn2025",
+    text: "Jones DW, Ferdinand KC, et al. 2025 AHA/ACC/AANP/AAPA/ABC/ACCP/ACPM/AGS/AMA/ASPC/NMA/PCNA/SGIM Guideline for the Prevention, Detection, Evaluation and Management of High Blood Pressure in Adults. J Am Coll Cardiol 2025. doi:10.1016/j.jacc.2025.05.007",
+    url: "https://doi.org/10.1016/j.jacc.2025.05.007",
+  },
+  hf2022: {
+    key: "hf2022",
+    text: "Heidenreich PA, et al. 2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure. Circulation 2022;145:e895-e1032. doi:10.1161/CIR.0000000000001063",
+    url: "https://doi.org/10.1161/CIR.0000000000001063",
+  },
+  hfref2024: {
+    key: "hfref2024",
+    text: "Maddox TM, et al. 2024 ACC Expert Consensus Decision Pathway for Treatment of Heart Failure With Reduced Ejection Fraction. J Am Coll Cardiol 2024;83:1444-1488. doi:10.1016/j.jacc.2023.12.024",
+    url: "https://doi.org/10.1016/j.jacc.2023.12.024",
+  },
+  hfpef2026: {
+    key: "hfpef2026",
+    text: "Kittleson MM, Panjrath GS, et al. Management of Heart Failure With Preserved Ejection Fraction: 2026 ACC Expert Consensus Decision Pathway. J Am Coll Cardiol 2026. doi:10.1016/j.jacc.2026.06.018",
+    url: "https://doi.org/10.1016/j.jacc.2026.06.018",
+  },
+  hcm2024: {
+    key: "hcm2024",
+    text: "Ommen SR, et al. 2024 AHA/ACC/AMSSM/HRS/PACES/SCMR Guideline for the Management of Hypertrophic Cardiomyopathy. Circulation 2024;149:e1239-e1311. doi:10.1161/CIR.0000000000001250",
+    url: "https://doi.org/10.1161/CIR.0000000000001250",
+  },
+  hcmriskscd: {
+    key: "hcmriskscd",
+    text: "O'Mahony C, et al. A novel clinical risk prediction model for sudden cardiac death in hypertrophic cardiomyopathy (HCM Risk-SCD). Eur Heart J 2014;35:2010-2020. doi:10.1093/eurheartj/eht439",
+    url: "https://doi.org/10.1093/eurheartj/eht439",
+  },
+  attr2025: {
+    key: "attr2025",
+    text: "Kittleson MM, Ambardekar AV, et al. 2025 ACC Concise Clinical Guidance: Evaluation and Management of Transthyretin Amyloid Cardiomyopathy. J Am Coll Cardiol 2025. doi:10.1016/j.jacc.2025.09.004",
+    url: "https://doi.org/10.1016/j.jacc.2025.09.004",
+  },
+  gillmore2016: {
+    key: "gillmore2016",
+    text: "Gillmore JD, et al. Nonbiopsy Diagnosis of Cardiac Transthyretin Amyloidosis. Circulation 2016;133:2404-2412. doi:10.1161/CIRCULATIONAHA.116.021612",
+    url: "https://doi.org/10.1161/CIRCULATIONAHA.116.021612",
+  },
+  nac2018: {
+    key: "nac2018",
+    text: "Gillmore JD, et al. A new staging system for cardiac transthyretin amyloidosis (NAC). Eur Heart J 2018;39:2799-2806. doi:10.1093/eurheartj/ehx589",
+    url: "https://doi.org/10.1093/eurheartj/ehx589",
+  },
+  escvhd2025: {
+    key: "escvhd2025",
+    text: "Praz F, Borger MA, et al. 2025 ESC/EACTS Guidelines for the management of valvular heart disease. Eur Heart J 2025. doi:10.1093/eurheartj/ehaf194",
+    url: "https://doi.org/10.1093/eurheartj/ehaf194",
+  },
+  af2023: {
+    key: "af2023",
+    text: "Joglar JA, et al. 2023 ACC/AHA/ACCP/HRS Guideline for the Diagnosis and Management of Atrial Fibrillation. Circulation 2024;149:e1-e156. doi:10.1161/CIR.0000000000001193",
+    url: "https://doi.org/10.1161/CIR.0000000000001193",
+  },
+  syncope2017: {
+    key: "syncope2017",
+    text: "Shen WK, et al. 2017 ACC/AHA/HRS Guideline for the Evaluation and Management of Patients With Syncope. Circulation 2017;136:e60-e122. doi:10.1161/CIR.0000000000000499",
+    url: "https://doi.org/10.1161/CIR.0000000000000499",
+  },
+  ccd2023: {
+    key: "ccd2023",
+    text: "Virani SS, et al. 2023 AHA/ACC/ACCP/ASPC/NLA/PCNA Guideline for the Management of Patients With Chronic Coronary Disease. Circulation 2023;148:e9-e119. doi:10.1161/CIR.0000000000001168",
+    url: "https://doi.org/10.1161/CIR.0000000000001168",
   },
 };
 
