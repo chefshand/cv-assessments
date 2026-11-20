@@ -361,3 +361,20 @@ describe("API key handling", () => {
     expect(r.message).not.toMatch(/SECRET|Headers|Bearer/);
   });
 });
+
+// ---------------------------------------------------------------- Dictation cues
+import { CUES, cueDone } from "@/lib/cues";
+describe("dictation cues", () => {
+  it("every cue key exists in its module's fields", () => {
+    for (const m of MODULES) {
+      const keys = new Set(m.fields.map((f) => f.key));
+      expect(CUES[m.id]?.length).toBeGreaterThan(0);
+      for (const c of CUES[m.id]) for (const k of c.keys) expect(keys.has(k), `${m.id}.${k}`).toBe(true);
+    }
+  });
+  it("marks a cue done when filled, including false booleans", () => {
+    expect(cueDone({ label: "Smoker", keys: ["smoker"] }, { smoker: false })).toBe(true);
+    expect(cueDone({ label: "x", keys: ["a", "b"], all: true }, { a: 1 })).toBe(false);
+    expect(cueDone({ label: "x", keys: ["meds"] }, { meds: [] })).toBe(false);
+  });
+});

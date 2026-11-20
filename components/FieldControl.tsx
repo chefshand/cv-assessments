@@ -4,7 +4,7 @@ import type { FieldDef, FieldValue } from "@/lib/types";
 export function FieldControl({
   f, value, onChange, ai,
 }: { f: FieldDef; value: FieldValue | undefined; onChange: (v: FieldValue | undefined) => void; ai: boolean }) {
-  const wrap = `py-2 px-1 ${ai ? "ai-filled px-2" : ""}`;
+  const wrap = `py-2 px-1 scroll-mt-24 ${ai ? "ai-filled px-2" : ""}`;
   const label = (
     <div className="mb-1.5 flex items-baseline justify-between gap-2">
       <span className="text-sm font-medium">{f.label}</span>
@@ -15,7 +15,7 @@ export function FieldControl({
 
   if (f.type === "number" || f.type === "text") {
     return (
-      <div className={wrap}>
+      <div id={`f-${f.key}`} className={wrap}>
         {label}
         <div className="flex items-center gap-2">
           <input
@@ -42,7 +42,7 @@ export function FieldControl({
   if (f.type === "bool") {
     const opts: [string, boolean][] = [["Yes", true], ["No", false]];
     return (
-      <div className={wrap}>
+      <div id={`f-${f.key}`} className={wrap}>
         {label}
         <div className="flex gap-2">
           {opts.map(([l, b]) => (
@@ -58,7 +58,7 @@ export function FieldControl({
 
   if (f.type === "select") {
     return (
-      <div className={wrap}>
+      <div id={`f-${f.key}`} className={wrap}>
         {label}
         <div className="flex flex-wrap gap-2">
           {f.options.map((o) => (
@@ -74,7 +74,7 @@ export function FieldControl({
 
   const cur = Array.isArray(value) ? value : [];
   return (
-    <div className={wrap}>
+    <div id={`f-${f.key}`} className={wrap}>
       {label}
       <div className="flex flex-wrap gap-2">
         {f.options.map((o) => {

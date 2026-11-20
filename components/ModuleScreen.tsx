@@ -7,6 +7,7 @@ import type { FieldDef, FieldValue, Inputs, RuleResult, Severity } from "@/lib/t
 import { FieldControl } from "./FieldControl";
 import { useDictation } from "./useDictation";
 import { PrivacyNote } from "./PrivacyNote";
+import { DictationGuide } from "./DictationGuide";
 
 // In-memory only (survives in-app navigation, cleared on reload). Never persisted.
 const memory = new Map<string, { inputs: Inputs; text: string; ai: string[] }>();
@@ -152,6 +153,16 @@ export function ModuleScreen({ id }: { id: string }) {
     setTimeout(() => setCopied(false), 1500);
   }
 
+  function jumpTo(key: string) {
+    const f = m.fields.find((x) => x.key === key);
+    if (f?.section) setOpenSections((o) => ({ ...o, [f.section!]: true }));
+    setTimeout(() => {
+      const el = document.getElementById(`f-${key}`);
+      el?.scrollIntoView({ behavior: "smooth", block: "center" });
+      (el?.querySelector("input,button") as HTMLElement | null)?.focus({ preventScroll: true });
+    }, 60);
+  }
+
   function reset() {
     setInputs({});
     setText("");
@@ -175,7 +186,7 @@ export function ModuleScreen({ id }: { id: string }) {
   }, [m.fields, clean]);
 
   return (
-    <main className="mx-auto max-w-2xl px-4 pb-32 pt-[max(1rem,env(safe-area-inset-top))]">
+    <main className="mx-auto max-w-2xl px-4 pb-32 lg:max-w-5xl pt-[max(1rem,env(safe-area-inset-top))]">
       <header className="mb-4 flex items-center gap-3">
         <Link href="/" className="chip" aria-label="Back">←</Link>
         <div className="min-w-0 flex-1">
@@ -185,10 +196,14 @@ export function ModuleScreen({ id }: { id: string }) {
       </header>
 
       {/* Free text / voice */}
-      <section className="card p-3">
+      <section className="card p-3 lg:grid lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-5">
+        <div>
         <div className="mb-2 flex items-center justify-between">
           <h2 className="text-sm font-semibold">Describe the patient</h2>
           <span className="muted text-xs">type, dictate, or skip to buttons</span>
+        </div>
+        <div className="lg:hidden">
+          <DictationGuide id={id} inputs={clean} onJump={jumpTo} />
         </div>
         <textarea
           className="field-input min-h-28 resize-y"
@@ -227,6 +242,10 @@ export function ModuleScreen({ id }: { id: string }) {
           <p className="muted mt-1 text-xs">Not used by the rules: {unmapped.join("; ")}</p>
         )}
         <div className="mt-2"><PrivacyNote compact /></div>
+        </div>
+        <aside className="hidden border-l pl-5 lg:block" style={{ borderColor: "var(--border)" }}>
+          <DictationGuide id={id} inputs={clean} onJump={jumpTo} panel />
+        </aside>
       </section>
 
       {/* Form */}
@@ -328,7 +347,7 @@ export function ModuleScreen({ id }: { id: string }) {
 
       {/* Sticky copy bar */}
       <div className="fixed inset-x-0 bottom-0 z-10 border-t px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur" style={{ background: "color-mix(in srgb, var(--card) 88%, transparent)", borderColor: "var(--border)" }}>
-        <div className="mx-auto flex max-w-2xl items-center gap-2">
+        <div className="mx-auto flex max-w-2xl items-center gap-2 lg:max-w-5xl">
           <button type="button" className="chip flex-1" onClick={() => apRef.current?.scrollIntoView({ behavior: "smooth" })}>
             View A&amp;P
           </button>
