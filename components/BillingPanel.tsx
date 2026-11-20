@@ -42,14 +42,6 @@ export function BillingPanel({ storeKey, hints, initial, suggestInterp = [] }: {
       {hints && (
         <button type="button" className="chip text-xs" onClick={() => set(seedFromHints(hints, b))}>↻ Re-apply suggestions from the current case</button>
       )}
-      {/* Visit */}
-      <div>
-        <p className="mb-1.5 text-sm font-medium">Visit type <span className="text-rose-600">*</span></p>
-        <div className="flex flex-wrap gap-2">
-          <button type="button" className="chip" aria-pressed={b.visit === "new"} onClick={() => set({ visit: "new" })}>New patient</button>
-          <button type="button" className="chip" aria-pressed={b.visit === "established"} onClick={() => set({ visit: "established" })}>Return (established)</button>
-        </div>
-      </div>
       <div className="grid grid-cols-2 gap-3">
         <label className="block">
           <span className="mb-1.5 block text-sm font-medium">Total time today <span className="text-rose-600">*</span></span>
@@ -107,6 +99,13 @@ export function BillingPanel({ storeKey, hints, initial, suggestInterp = [] }: {
               </span>
             </div>
           ))}
+        </div>
+        <div className="mt-3 rounded-xl border border-[var(--border)] p-3">
+          <p className="mb-1.5 text-sm font-medium">Visit type <span className="text-rose-600">*</span></p>
+          <div className="flex flex-wrap gap-2">
+            <button type="button" className="chip" aria-pressed={b.visit === "new"} onClick={() => set({ visit: "new" })}>New patient</button>
+            <button type="button" className="chip" aria-pressed={b.visit === "established"} onClick={() => set({ visit: "established" })}>Return</button>
+          </div>
         </div>
         <p className="mt-3 mb-1.5 text-xs font-medium">I independently interpreted (images/tracings, not billed separately by me)</p>
         <div className="flex flex-wrap gap-2">
