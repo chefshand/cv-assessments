@@ -8,6 +8,8 @@ import { FieldControl } from "./FieldControl";
 import { useDictation } from "./useDictation";
 import { PrivacyNote } from "./PrivacyNote";
 import { DictationGuide } from "./DictationGuide";
+import { BillingPanel } from "./BillingPanel";
+import { billingHints } from "@/lib/billing";
 
 // In-memory only (survives in-app navigation, cleared on reload). Never persisted.
 const memory = new Map<string, { inputs: Inputs; text: string; ai: string[] }>();
@@ -330,6 +332,21 @@ export function ModuleScreen({ id }: { id: string }) {
           </button>
         </div>
         {err && <p className="mt-2 text-xs text-rose-600">{err}</p>}
+      </section>
+
+      {/* Billing */}
+      <section className="card mt-4 p-4" id="billing">
+        <details open>
+          <summary className="cursor-pointer text-base font-semibold">💵 Visit level (E/M) &amp; billing statement</summary>
+          <p className="muted mt-1 text-xs">Suggestions below come from this case; untick anything you did not do today.</p>
+          <div className="mt-3">
+            <BillingPanel
+              storeKey={`m:${id}`}
+              hints={billingHints(id, m.title, clean, apText, result.headline)}
+              suggestInterp={billingHints(id, m.title, clean, apText, result.headline).interpretations}
+            />
+          </div>
+        </details>
       </section>
 
       {/* Sources */}

@@ -40,6 +40,15 @@ export default function About() {
           </ol>
         </section>
       ))}
+      <section className="mt-4">
+        <h2 className="font-semibold">💵 Billing (E/M)</h2>
+        <ul className="muted mt-1 list-disc space-y-1 pl-5 text-xs">
+          <li>AMA CPT office/outpatient E/M guidelines (2021 framework, current in 2026): level by MDM (2 of 3: problems, data, risk) or by total time on the date of service, never combined. Time thresholds: new 15/30/45/60 min (99202-99205), established 10/20/30/40 min (99212-99215).</li>
+          <li>Prolonged services: CPT 99417 (from 75 min new / 55 min established); Medicare G2212 (from 89 min new / 69 min established).</li>
+          <li>G2211 (CY2024-2026 Medicare PFS): office E/M add-on for longitudinal care of a serious or complex condition; not with modifier 25 except preventive services, AWV and vaccines.</li>
+          <li><a className="underline" href="https://www.cms.gov/newsroom/fact-sheets/calendar-year-cy-2027-medicare-physician-fee-schedule-final-rule" target="_blank" rel="noreferrer">CY2027 Medicare PFS final rule (CMS fact sheet, Nov 2026)</a>: G2211 becomes modifier B1 (+16% of the E/M payment) or B2 (+32%, Shared Savings Program / LEAD ACO participants) from Jan 1, 2027.</li>
+        </ul>
+      </section>
       <p className="mt-8 text-center">
         <a href="/logout" className="muted text-xs underline">Sign out</a>
       </p>

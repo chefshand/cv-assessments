@@ -12,6 +12,13 @@ export default function Home() {
           <p className="muted text-sm">Guideline-based recommendations → copy-ready A&amp;P</p>
         </div>
       </header>
+      <Link href="/billing" className="card mb-3 flex items-start gap-3 border-2 p-4 active:scale-[0.99]" style={{ borderColor: "var(--chip-on)" }}>
+        <span className="text-2xl" aria-hidden>💵</span>
+        <span>
+          <span className="block font-semibold">Billing check</span>
+          <span className="muted block text-sm">Paste any finished A&amp;P: E/M level by MDM or time (whichever is higher), billing statement, G2211 / B1, and documentation questions.</span>
+        </span>
+      </Link>
       <nav className="grid gap-3">
         {MODULES.map((m) => (
           <Link key={m.id} href={`/m/${m.id}`} className="card flex items-start gap-3 p-4 active:scale-[0.99]">
