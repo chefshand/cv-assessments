@@ -12,9 +12,10 @@ import { valveModule } from "./valve";
 import { afModule } from "./af";
 import { syncopeModule } from "./syncope";
 import { chestPainModule } from "./chestpain";
+import { cardioOncModule } from "./cardioonc";
 
 export const MODULES: ClinicalModule[] = [
   htnModule, hfModule, afModule, valveModule, chestPainModule, ascvdModule, cacModule,
-  hcmModule, attrModule, aortaModule, syncopeModule, paModule, periopModule,
+  hcmModule, attrModule, cardioOncModule, aortaModule, syncopeModule, paModule, periopModule,
 ];
 export const getModule = (id: string) => MODULES.find((m) => m.id === id);

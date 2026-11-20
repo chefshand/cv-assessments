@@ -259,7 +259,7 @@ const ED = /\b(emergency department|hospitaliz|admit)/i;
 const PROBLEM_LABEL: Record<string, string> = {
   htn: "hypertension", hf: "heart failure", af: "atrial fibrillation", valve: "valvular heart disease", chestpain: "chest pain / coronary disease",
   syncope: "syncope", attr: "cardiac amyloidosis", hcm: "hypertrophic cardiomyopathy", ascvd: "ASCVD risk / dyslipidemia",
-  cac: "coronary artery calcification", aorta: "thoracic aortic aneurysm", pa: "suspected primary aldosteronism", periop: "preoperative cardiovascular risk",
+  cac: "coronary artery calcification", cardioonc: "cardiotoxicity surveillance (cancer therapy)", aorta: "thoracic aortic aneurysm", pa: "suspected primary aldosteronism", periop: "preoperative cardiovascular risk",
 };
 
 export function billingHints(moduleId: string, title: string, v: Record<string, unknown>, ap: string, headline: string): BillingHints {
@@ -284,6 +284,7 @@ export function billingHints(moduleId: string, title: string, v: Record<string, 
     case "aorta": status = /refer/.test(h) ? "chronic_progression" : "stable_chronic"; break;
     case "pa": status = "undiagnosed_uncertain"; break;
     case "periop": status = "stable_chronic"; break;
+    case "cardioonc": status = /myocarditis/.test(h) ? "threat" : /ctrcd (moderate|severe|symptomatic)/.test(h) ? "chronic_severe" : /ctrcd mild/.test(h) ? "chronic_progression" : "stable_chronic"; break;
   }
   // Interpretations are only suggested (asked), never pre-checked.
   const interp: string[] = [];

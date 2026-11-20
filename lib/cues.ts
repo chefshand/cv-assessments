@@ -226,6 +226,23 @@ export const CUES: Record<string, Cue[]> = {
     { label: "Test result", keys: ["result"] },
     { label: "Antianginals", keys: ["antianginals"] },
   ],
+  cardioonc: [
+    { label: "Age / sex", keys: ["age", "sex"], all: true, core: true },
+    { label: "Cancer type", keys: ["cancer"] },
+    { label: "Before / on / after treatment", keys: ["phase"], core: true },
+    { label: "Therapies (chemo, HER2, ICI, TKI, RT)", keys: ["therapies"], core: true },
+    { label: "Anthracycline agent + cumulative dose", keys: ["anthraDose"] },
+    { label: "Radiation heart dose", keys: ["mhd"] },
+    { label: "Prior HF / CAD / valve disease", keys: ["hfCm", "cad", "severeVhd"], core: true },
+    { label: "HTN / DM / CKD / smoking / obesity", keys: ["riskFactors"], core: true },
+    { label: "Baseline LVEF", keys: ["baselineEf"], core: true },
+    { label: "Current LVEF", keys: ["ef"], core: true },
+    { label: "GLS change", keys: ["glsDrop"] },
+    { label: "Troponin / BNP", keys: ["biomarkerRise", "baseTnHigh", "baseNpHigh"] },
+    { label: "HF symptoms", keys: ["hfSymptoms"] },
+    { label: "BP", keys: ["sbp"] },
+    { label: "QTc", keys: ["qtc"] },
+  ],
 };
 
 export function cueDone(c: Cue, inputs: Record<string, unknown>): boolean {

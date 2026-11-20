@@ -391,7 +391,7 @@ function shortCite(key: string): string {
     rcri: "RCRI", dasi: "METS/DASI", pause: "PAUSE", glp1_2024: "GLP-1 2024", valve2020: "ACC/AHA VHD 2020",
     htn2025: "ACC/AHA BP 2025", hf2022: "AHA/ACC/HFSA 2022", hfref2024: "ACC HFrEF 2024", hfpef2026: "ACC HFpEF 2026",
     hcm2024: "AHA/ACC HCM 2024", hcmriskscd: "HCM Risk-SCD", attr2025: "ACC ATTR-CM 2025", gillmore2016: "Gillmore 2016",
-    nac2018: "NAC stage", escvhd2025: "ESC VHD 2025", af2023: "ACC/AHA AF 2023", syncope2017: "Syncope 2017", ccd2023: "CCD 2023",
+    nac2018: "NAC stage", escvhd2025: "ESC VHD 2025", af2023: "ACC/AHA AF 2023", syncope2017: "Syncope 2017", ccd2023: "CCD 2023", esco2022: "ESC Cardio-Onc 2022", accco2025: "ACC 2025", asco2017: "ASCO 2017",
   };
   return map[key] ?? key;
 }

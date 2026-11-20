@@ -190,3 +190,35 @@ describe("Chest pain", () => {
     expect(evaluateChestPain({ age: 60, sex: "male", result: "high_risk_anatomy" }).headline).toMatch(/invasive/);
   });
 });
+
+import { ctrcd, doxEquivalent, evaluateCardioOnc, hfaIcos } from "@/lib/modules/cardioonc";
+
+describe("Cardio-oncology", () => {
+  it("HFA-ICOS", () => {
+    expect(hfaIcos({ hfCm: true }).risk).toBe("very high");
+    expect(hfaIcos({ age: 50, cad: true }).risk).toBe("high");
+    expect(hfaIcos({ age: 70, riskFactors: ["htn"] }).risk).toBe("moderate");
+    expect(hfaIcos({ age: 45 }).risk).toBe("low");
+  });
+  it("doxorubicin equivalents", () => {
+    expect(doxEquivalent("epirubicin", 400)).toBe(320);
+    expect(doxEquivalent("doxorubicin", 240)).toBe(240);
+  });
+  it("CTRCD grading", () => {
+    expect(ctrcd({ ef: 38 }).grade).toBe("severe");
+    expect(ctrcd({ ef: 45, baselineEf: 60 }).grade).toBe("moderate");
+    expect(ctrcd({ ef: 55, baselineEf: 62, glsDrop: 17 }).grade).toBe("mild");
+    expect(ctrcd({ ef: 58, baselineEf: 62, glsDrop: 8 }).grade).toBe("none");
+  });
+  it("HER2 surveillance every 3 months at low risk", () => {
+    const r = evaluateCardioOnc({ age: 45, sex: "female", phase: "on", therapies: ["her2"], baselineEf: 62 });
+    expect(r.recommendations.map((x) => x.text).join(" ")).toMatch(/every 3 months/);
+  });
+  it("ICI myocarditis → steroids and admission", () => {
+    expect(evaluateCardioOnc({ therapies: ["ici"], iciMyocarditis: true }).headline).toMatch(/myocarditis/);
+  });
+  it("high-risk survivor → echo at 1, 3, 5 years", () => {
+    const r = evaluateCardioOnc({ phase: "survivor", therapies: ["anthracycline"], anthraAgent: "doxorubicin", anthraDose: 300 });
+    expect(r.ap).toMatch(/1, 3 and 5 years/);
+  });
+});

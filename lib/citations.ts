@@ -156,6 +156,21 @@ export const CITES: Record<string, Citation> = {
     text: "Virani SS, et al. 2023 AHA/ACC/ACCP/ASPC/NLA/PCNA Guideline for the Management of Patients With Chronic Coronary Disease. Circulation 2023;148:e9-e119. doi:10.1161/CIR.0000000000001168",
     url: "https://doi.org/10.1161/CIR.0000000000001168",
   },
+  esco2022: {
+    key: "esco2022",
+    text: "Lyon AR, López-Fernández T, et al. 2022 ESC Guidelines on cardio-oncology. Eur Heart J 2022;43:4229-4361. doi:10.1093/eurheartj/ehac244",
+    url: "https://doi.org/10.1093/eurheartj/ehac244",
+  },
+  accco2025: {
+    key: "accco2025",
+    text: "Diagnosis and Management of Cardiovascular Adverse Effects of Targeted Oncology Therapies: BTK, Immune Checkpoint, and VEGF Inhibitors. 2025 ACC Concise Clinical Guidance (key takeaways).",
+    url: "https://www.acc.org/-/media/Non-Clinical/Files-PDFs-Excel-MS-Word-etc/Tools-and-Practice-Support/Clinical-Solutions/2026/B26032-CardioOnc-CCG-Key-Takeaways.pdf",
+  },
+  asco2017: {
+    key: "asco2017",
+    text: "Armenian SH, et al. Prevention and Monitoring of Cardiac Dysfunction in Survivors of Adult Cancers: ASCO Clinical Practice Guideline. J Clin Oncol 2017;35:893-911. doi:10.1200/JCO.2016.70.5400",
+    url: "https://doi.org/10.1200/JCO.2016.70.5400",
+  },
 };
 
 export const cites = (...keys: string[]): Citation[] => keys.map((k) => CITES[k]);
