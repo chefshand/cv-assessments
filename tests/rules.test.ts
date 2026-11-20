@@ -336,3 +336,28 @@ describe("extraction schema", () => {
     for (const m of MODULES) expect(() => m.evaluate({})).not.toThrow();
   });
 });
+
+// ---------------------------------------------------------------- Server safety
+import { apiError, readApiKey, ConfigError } from "@/lib/claude";
+describe("API key handling", () => {
+  it("trims whitespace, quotes and a Bearer prefix", () => {
+    expect(readApiKey('  "sk-ant-abc123"\n')).toBe("sk-ant-abc123");
+    expect(readApiKey("Bearer sk-ant-abc123")).toBe("sk-ant-abc123");
+  });
+  it("rejects malformed keys without echoing them", () => {
+    for (const bad of ["cv-vercel sk-ant-SECRET", "Bearer cv-vercel sk-ant-SECRET", "abc", ""]) {
+      try {
+        readApiKey(bad);
+        throw new Error("should have thrown");
+      } catch (e) {
+        expect(e).toBeInstanceOf(ConfigError);
+        expect((e as Error).message).not.toMatch(/SECRET/);
+      }
+    }
+  });
+  it("never returns raw runtime error text", () => {
+    const leak = new TypeError('Headers.append: "Bearer sk-ant-SECRET" is an invalid header value.');
+    const r = apiError(leak);
+    expect(r.message).not.toMatch(/SECRET|Headers|Bearer/);
+  });
+});
