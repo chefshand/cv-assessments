@@ -12,6 +12,13 @@ export default function Home() {
           <p className="muted text-sm">Guideline-based recommendations → copy-ready A&amp;P</p>
         </div>
       </header>
+      <Link href="/visit" className="card mb-3 flex items-start gap-3 border-2 p-4 active:scale-[0.99]" style={{ borderColor: "var(--chip-on)" }}>
+        <span className="text-2xl" aria-hidden>🗂️</span>
+        <span>
+          <span className="block font-semibold">Whole visit (one dictation)</span>
+          <span className="muted block text-sm">Dictate the full history once. Each relevant module (e.g., CAC, BP, AF) runs its guideline rules, and you get one reconciled assessment &amp; plan.</span>
+        </span>
+      </Link>
       <Link href="/billing" className="card mb-3 flex items-start gap-3 border-2 p-4 active:scale-[0.99]" style={{ borderColor: "var(--chip-on)" }}>
         <span className="text-2xl" aria-hidden>💵</span>
         <span>

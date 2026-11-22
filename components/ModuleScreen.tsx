@@ -383,7 +383,7 @@ export function ModuleScreen({ id }: { id: string }) {
   );
 }
 
-function shortCite(key: string): string {
+export function shortCite(key: string): string {
   const map: Record<string, string> = {
     lipid2026: "ACC/AHA 2026", prevent: "PREVENT", mesa: "MESA", cacdrs: "CAC-DRS", scct2021: "NLA/SCCT 2021",
     prim2019: "ACC/AHA 2019", chestpain2021: "Chest pain 2021", esc2025: "ESC/EAS 2025", aorta2022: "ACC/AHA 2022",
