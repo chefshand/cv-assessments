@@ -7,7 +7,7 @@ const STATIC = `${VERSION}-static`;
 const PAGES = `${VERSION}-pages`;
 
 self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(PAGES).then((c) => c.addAll(["/", "/icons/icon-192.png"]).catch(() => {})));
+  e.waitUntil(caches.open(PAGES).then((c) => c.addAll(["/", "/visit", "/icons/icon-192.png"]).catch(() => {})));
   self.skipWaiting();
 });
 

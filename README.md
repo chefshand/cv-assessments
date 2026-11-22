@@ -10,6 +10,13 @@ Phone-first PWA for cardiology clinic decision support. For five common clinic q
 | Primary aldosteronism | 2025 Endocrine Society (screen all HTN, assay-specific ARR/aldo cutoffs, medication & K+ interference, next steps) |
 | Preoperative risk | 2024 ACC/AHA perioperative, RCRI, DASI, BNP/NT-proBNP, stents/DAPT timing, valves, PAUSE DOAC holds, SGLT2/GLP-1/RAASi |
 
+## Whole visit (one dictation)
+`/visit` takes one dictated history covering several problems (e.g., CAC score, BP and AF in the same patient).
+1. `POST /api/visit` has Claude pick the relevant modules, then extracts each module's fields in parallel (Claude only parses).
+2. A confirm screen shows what was heard. Shared facts (age, sex, SBP, diabetes…) are entered once for every module; a few cross-module inputs are auto-filled and labeled (e.g., AF's CHA₂DS₂-VASc hypertension point from the BP module) and can be overridden.
+3. Each module's rules run unchanged; `lib/visit/plan.ts` numbers the problems into one A&P and reconciles overlaps (primary-prevention aspirin vs anticoagulation, two LDL-C goals → the stricter, AF rate control also lowering BP, SBP >160 as a bleeding risk on anticoagulation).
+4. Offline, without an API key, or with "On-device only", `lib/visit/local.ts` detects modules and reads common facts with fixed patterns, and the screen says so.
+
 ## How Claude is used
 * `POST /api/extract` turns free text into the module's fields (structured outputs). Extracted fields are outlined in amber for the clinician to confirm.
 * `POST /api/phrase` optionally rewrites the rule-generated A&P (paragraph / numbered / brief). The rules are recomputed server-side and Claude is told not to add recommendations.
